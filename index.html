@@ -3,8 +3,126 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <title>EV Charge Calculation Program</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Monaspace+Neon&display=swap");
+
+      body {
+        font-family: Bierstadt, "Monaspace Neon", sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+
+      h1,
+      h2 {
+        color: #333;
+        text-align: center;
+      }
+
+      .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .input-row {
+        display: flex;
+        gap: 1rem;
+        height: auto;
+        align-items: center;
+      }
+
+      .input-row h3 {
+        min-width: 200px;
+        margin: 0;
+      }
+
+      input,
+      select {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 12px 20px;
+        background-color: #0526ce;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      button:hover {
+        background-color: #05145e;
+      }
+
+      #result {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Mobile Styles */
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 24px;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+
+        .input-container {
+          padding: 15px;
+        }
+
+        .input-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+
+        .input-row h3 {
+          min-width: auto;
+          margin-bottom: 5px;
+          font-size: 16px;
+        }
+
+        input,
+        select {
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        button {
+          padding: 15px 20px;
+          font-size: 18px;
+        }
+
+        #result {
+          padding: 15px;
+        }
+      }
+    </style>
   </head>
   <body>
     <h1>EV Charge Calculation Program</h1>
