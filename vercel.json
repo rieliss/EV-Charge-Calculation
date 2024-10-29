@@ -5,5 +5,8 @@
     { "src": "*.js", "use": "@vercel/node" },
     { "src": "*.css", "use": "@vercel/static" }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
 }

@@ -1,0 +1,9 @@
+{
+  "name": "ev-charge-calculator",
+  "version": "1.0.0",
+  "description": "EV Charge Calculator",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  }
+}
