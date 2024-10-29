@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>EV Charge Calculation Program</title>
+  </head>
+  <body>
+    <h1>EV Charge Calculation Program</h1>
+    <div class="input-container">
+      <div class="input-row">
+        <h3><label for="calculation-mode">Calculation Mode:</label></h3>
+        <select id="calculation-mode" onchange="toggleInputs()">
+          <option value="price">Calculate Price</option>
+          <option value="time">Calculate Battery Gain</option>
+        </select>
+      </div>
+      <div class="input-row">
+        <h3><label for="max">Car Battery Capacity (kWh):</label></h3>
+        <input type="number" id="max" placeholder="Enter capacity in kWh" />
+      </div>
+      <div class="input-row">
+        <h3><label for="price">Unit Charge Price ($/kWh):</label></h3>
+        <input type="number" id="price" placeholder="Enter price per kWh" />
+      </div>
+      <div class="input-row">
+        <h3>
+          <label for="percent_battery">Current Battery Percentage:</label>
+        </h3>
+        <input
+          type="number"
+          id="percent_battery"
+          placeholder="Enter current %"
+        />
+      </div>
+      <div id="expect-battery-row" class="input-row">
+        <h3>
+          <label for="expect_battery">Expected Battery Percentage:</label>
+        </h3>
+        <input
+          type="number"
+          id="expect_battery"
+          placeholder="Enter expected %"
+        />
+      </div>
+      <div id="charge-time-row" class="input-row" style="display: none">
+        <h3><label for="charge_time">Charging Time (minutes):</label></h3>
+        <input
+          type="number"
+          id="charge_time"
+          placeholder="Enter charging time in minutes"
+        />
+      </div>
+      <button type="button" onclick="calculate()">Calculate</button>
+      <div id="result"></div>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
