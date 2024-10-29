@@ -9,6 +9,7 @@
   <body>
     <h1>EV Charge Calculation Program</h1>
     <div class="input-container">
+      <div id="result"></div>
       <div class="input-row">
         <h3><label for="calculation-mode">Calculation Mode:</label></h3>
         <select id="calculation-mode" onchange="toggleInputs()">
@@ -21,7 +22,7 @@
         <input type="number" id="max" placeholder="Enter capacity in kWh" />
       </div>
       <div class="input-row">
-        <h3><label for="price">Unit Charge Price ($/kWh):</label></h3>
+        <h3><label for="price">Unit Charge Price (THB/kWh):</label></h3>
         <input type="number" id="price" placeholder="Enter price per kWh" />
       </div>
       <div class="input-row">
@@ -52,8 +53,15 @@
           placeholder="Enter charging time in minutes"
         />
       </div>
+      <div id="charger-power-row" class="input-row" style="display: none">
+        <h3><label for="charger_power">Charger Power (kW):</label></h3>
+        <input
+          type="number"
+          id="charger_power"
+          placeholder="Enter charger power in kW"
+        />
+      </div>
       <button type="button" onclick="calculate()">Calculate</button>
-      <div id="result"></div>
     </div>
     <script src="/app.js"></script>
   </body>

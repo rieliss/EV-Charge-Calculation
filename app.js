@@ -2,14 +2,16 @@ function toggleInputs() {
   const mode = document.getElementById("calculation-mode").value;
   const expectBatteryRow = document.getElementById("expect-battery-row");
   const chargeTimeRow = document.getElementById("charge-time-row");
+  const chargerPowerRow = document.getElementById("charger-power-row");
 
   if (mode === "price") {
-    const resultElement = document.getElementById("result");
     expectBatteryRow.style.display = "flex";
     chargeTimeRow.style.display = "none";
+    chargerPowerRow.style.display = "none";
   } else {
     expectBatteryRow.style.display = "none";
     chargeTimeRow.style.display = "flex";
+    chargerPowerRow.style.display = "flex";
   }
 }
 
@@ -28,7 +30,10 @@ function calculate() {
     calculatePrice(max, price, percentBattery, expectBattery);
   } else {
     const chargeTime = parseFloat(document.getElementById("charge_time").value);
-    calculateBatteryGain(max, price, percentBattery, chargeTime);
+    const chargerPower = parseFloat(
+      document.getElementById("charger_power").value
+    );
+    calculateBatteryGain(max, price, percentBattery, chargeTime, chargerPower);
   }
 }
 
@@ -45,16 +50,30 @@ function calculatePrice(max, price, percentBattery, expectBattery) {
   resultElement.innerHTML = `
     <h2>Price Calculation Result:</h2>
     <p>Energy needed: ${energyNeeded.toFixed(2)} kWh</p>
-    <p>Total price: $${totalPrice.toFixed(2)}</p>
+    <p>Total price: ${totalPrice.toFixed(2)} THB</p>
     <p>Estimated charging time: ${chargingTime.toFixed(2)} minutes</p>
   `;
 }
 
-function calculateBatteryGain(max, price, percentBattery, chargeTime) {
-  console.log("Input values:", { max, price, percentBattery, chargeTime });
+function calculateBatteryGain(
+  max,
+  price,
+  percentBattery,
+  chargeTime,
+  chargerPower
+) {
+  console.log("Input values:", {
+    max,
+    price,
+    percentBattery,
+    chargeTime,
+    chargerPower,
+  });
 
-  const maxChargingRate = max / 60; // kWh per minute
-  const energyGained = maxChargingRate * chargeTime;
+  const energyGained = Math.min(
+    (chargerPower * chargeTime) / 60,
+    (max * (100 - percentBattery)) / 100
+  );
   const percentageGained = (energyGained / max) * 100;
   const newBatteryPercentage = Math.min(percentBattery + percentageGained, 100);
   const totalPrice = energyGained * price;
@@ -72,9 +91,10 @@ function calculateBatteryGain(max, price, percentBattery, chargeTime) {
     <p>Energy gained: ${energyGained.toFixed(2)} kWh</p>
     <p>Percentage gained: ${percentageGained.toFixed(2)}%</p>
     <p>New battery percentage: ${newBatteryPercentage.toFixed(2)}%</p>
-    <p>Total price: $${totalPrice.toFixed(2)}</p>
+    <p>Total price: ${totalPrice.toFixed(2)} THB</p>
   `;
 }
+
 toggleInputs();
 
 window.toggleInputs = toggleInputs;
